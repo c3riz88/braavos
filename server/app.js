@@ -4,7 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var skipper = require('skipper');
 
+// Load routes
 var indexRoutes = require('./routes/index');
 
 var app = express();
@@ -16,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(skipper());
 
 app.use('/', indexRoutes);
 
